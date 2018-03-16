@@ -1,10 +1,12 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
     public GameObject TowerPrefab;
-
     private GameObject currentTower;
+
+    public Action TowerPlacedEvent = new Action(() => { });
 
     public void SelectTower()
     {
@@ -24,5 +26,6 @@ public class TowerPlacement : MonoBehaviour
     public void PlaceTower()
     {
         currentTower = null;
+        TowerPlacedEvent();
     }
 }
