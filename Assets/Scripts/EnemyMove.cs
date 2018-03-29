@@ -6,17 +6,13 @@ public class EnemyMove : MonoBehaviour
 {
     private NavMeshAgent navMeshAgent;
 
-    public Transform destination;
-
-    private void Start()
+    private void Awake()
     {
         navMeshAgent = this.GetComponent<NavMeshAgent>();
-        SetDestination();
     }
 
-    private void SetDestination()
+    public void SetDestination(Vector3 destination)
     {
-        Vector3 targetVector = destination.transform.position;
-        navMeshAgent.SetDestination(targetVector);
+        navMeshAgent.SetDestination(destination);
     }
 }
