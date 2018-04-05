@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4136124927395694}
   - component: {fileID: 33057960246434770}
   - component: {fileID: 23186477092843732}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4135705037134050}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   - component: {fileID: 4397177258888300}
   - component: {fileID: 33607306818811978}
   - component: {fileID: 23423756081112970}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,11 +68,28 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4273137129003036}
-  - component: {fileID: 114104275383155812}
+  - component: {fileID: 114937634772908602}
   - component: {fileID: 114409172403101572}
   - component: {fileID: 114455364384424396}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Turret
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1907386225740874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4583930210228048}
+  - component: {fileID: 65525122167765026}
+  - component: {fileID: 114804701233785782}
+  m_Layer: 9
+  m_Name: ShootRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -86,7 +103,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4776330532808452}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -131,6 +148,7 @@ Transform:
   m_Children:
   - {fileID: 4776330532808452}
   - {fileID: 4135705037134050}
+  - {fileID: 4583930210228048}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -146,6 +164,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4776330532808452}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4583930210228048
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907386225740874}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4273137129003036}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4776330532808452
 Transform:
@@ -244,17 +275,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1518005080610008}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114104275383155812
-MonoBehaviour:
+--- !u!65 &65525122167765026
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1519752986725124}
+  m_GameObject: {fileID: 1907386225740874}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ce768a1b450807848a02eed630531821, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 15, y: 15, z: 15}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114409172403101572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -277,3 +309,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 293d5aba9c5f41a42a16cc8b7ed86ad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BulletPrefab: {fileID: 0}
+  SpawnPoint: {fileID: 4135705037134050}
+--- !u!114 &114804701233785782
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1907386225740874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce768a1b450807848a02eed630531821, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TargetedLayer:
+    serializedVersion: 2
+    m_Bits: 1024
+--- !u!114 &114937634772908602
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1519752986725124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df930808381742d44aac2b49fd9caec0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  turretShooting: {fileID: 114455364384424396}
+  turretAiming: {fileID: 114409172403101572}
+  turretShootingRange: {fileID: 114804701233785782}

@@ -9,6 +9,8 @@ public class MouseInput : MonoBehaviour
     [SerializeField]
     private KeyCode newTowerHotkey = KeyCode.A;
 
+    public LayerMask LayerToTarget;
+
     private void Start()
     {
         towerPlacement = FindObjectOfType<TowerPlacement>();
@@ -30,7 +32,7 @@ public class MouseInput : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit hitInfo;
-        if (Physics.Raycast(ray, out hitInfo))
+        if (Physics.Raycast(ray, out hitInfo, Mathf.Infinity, LayerToTarget.value))
         {
             towerPlacement.MoveCurrentTowerToPosition(hitInfo.point);
         }

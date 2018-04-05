@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class TowerPlacement : MonoBehaviour
 {
+    public GameObject TurretPrefab;
     public GameObject TowerPrefab;
     private GameObject currentTower;
 
@@ -25,6 +26,8 @@ public class TowerPlacement : MonoBehaviour
 
     public void PlaceTower()
     {
+        var position = currentTower.transform.Find("TurretAttachPoint").transform.position;
+        Instantiate(TurretPrefab, position, Quaternion.identity, currentTower.transform);
         currentTower = null;
         TowerPlacedEvent();
     }
