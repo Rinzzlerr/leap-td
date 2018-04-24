@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class TurretShootingRange : MonoBehaviour
 {
-    private Action<GameObject> enemyEnteredShootingRange = new Action<GameObject>((go) => { });
-    private Action<GameObject> enemyExitedShootingRange = new Action<GameObject>((go) => { });
+    private Action<GameObject> enemyEnteredShootingRange;
+    private Action<GameObject> enemyExitedShootingRange;
 
     public LayerMask TargetedLayer;
 
@@ -26,18 +26,20 @@ public class TurretShootingRange : MonoBehaviour
 
     public void SubscribeToEnemyEnteredShootingRange(Action<GameObject> callback)
     {
+        if (enemyEnteredShootingRange == null)
+        {
+            enemyEnteredShootingRange = (go) => { };
+        }
         enemyEnteredShootingRange += callback;
     }
 
     public void SubscribeToEnemyExitedShootingRange(Action<GameObject> callback)
     {
+        if (enemyExitedShootingRange == null)
+        {
+            enemyExitedShootingRange = (go) => { };
+        }
         enemyExitedShootingRange += callback;
-    }
-
-    private void OnEnable()
-    {
-        enemyEnteredShootingRange = new Action<GameObject>((go) => { });
-        enemyExitedShootingRange = new Action<GameObject>((go) => { });
     }
 
     private void OnDisable()
